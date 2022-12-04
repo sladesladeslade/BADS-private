@@ -80,16 +80,20 @@ class VSPCraft():
         # gimme a clean path!
         return cleanPath
 
-    def CGCalc(self, objectList:list, wingList:list):
+    def ACCalc(self, wingList:list):
         """
-        This function calculates the static margin of the vehicle from its
-        objects and wings. It calculates the NP and CG and outputs the NP and
-        CG locations and static margin of the vehicle.
+        This function calculates the AC of the wings in the VSP craft.
 
-        :param objectList: list of craftObjects to include
         :param wingList: list of wings to use to calculate AC
-        :returns: NP, CG, static margin
+        :return: AC
         """
+
+        # add each wing to set 4
+        for wings in wingList:
+            wingid = wings.simpleWing
+            vsp.SetSetFlag(wingid, 4, True)
+
+        # run VSPAero on set 4
 
 class craftObject:
     """
