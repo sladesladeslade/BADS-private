@@ -152,6 +152,8 @@ class simpleWing():
         self.sweep = vsp.GetParmVal(self.simpleWing,"Sweep","XSec_1")
         self.twist = vsp.GetParmVal(self.simpleWing,"Twist","XSec_1")
         self.dihedral = vsp.GetParmVal(self.simpleWing,"Dihedral","XSec_1")
+        self.taperRatio = self.tipChord/self.rootChord
+        self.cmac = (2/3)*(self.tipChord)*((self.taperRatio**2 + self.taperRatio + 1)/(self.taperRatio + 1))
 
     def updateAirfoils(self, rootNACAthick, tipNACAthick, newRootFoil,
                         newTipFoil, rootChord, tipChord):
@@ -264,10 +266,12 @@ if __name__ == "__main__":
     # print(wing.dihedral)
     # print(wing.incidence)
     # print(wing.position)
-    # print(wing.rootChord)
+    # print("\n",wing.rootChord)
     # print(wing.tipChord)
     # print(wing.area)
     # print(wing.span)
     # print(wing.sweep)
     # print(wing.twist)
     # print(wing.weight)
+    # print(wing.taperRatio)
+    # print(wing.cmac)
