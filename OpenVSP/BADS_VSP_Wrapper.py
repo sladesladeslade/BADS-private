@@ -80,21 +80,6 @@ class VSPCraft():
         # gimme a clean path!
         return cleanPath
 
-    def ACCalc(self, wingList:list):
-        """
-        This function calculates the AC of the wings in the VSP craft.
-
-        :param wingList: list of wings to use to calculate AC
-        :return: AC
-        """
-
-        # add each wing to set 4
-        for wings in wingList:
-            wingid = wings.simpleWing
-            vsp.SetSetFlag(wingid, 4, True)
-
-        # run VSPAero on set 4
-
 class craftObject:
     """
     This class defines an object and its properties from a VSP model.
@@ -258,6 +243,9 @@ if __name__ == "__main__":
     testVehicle = VSPCraft(VSPFilename="~/BrooksAeroDesignSuite/OpenVSP/vspfiletest.vsp3")
 
     wing = simpleWing(wingName="mainwing", weight=100)
+    wing2 = simpleWing(wingName="Wing2", weight=4)
+
+    testVehicle.ACCalc(wingList=[wing,wing2])
 
     # wing.updateAirfoils(None, .15, "~/BrooksAeroDesignSuite/OpenVSP/AF_Files/NACA23015.af", None, 5., None)
     # wing.updateAirfoils(0.11, None, None, None, None, None)
